@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 /**
  *
- * @author Julio Arriaga
+ * @author Alejandro Torices Oliva A01377744, Alexys Martin Coate Reyes A01746998 
+ * & Daniel Trejo Gonzalez A01372747
  */
 public class ResizableArrayBag<T> implements BagInterface<T> {
     
@@ -95,10 +96,20 @@ public class ResizableArrayBag<T> implements BagInterface<T> {
     }
     
     public void removeEvery(T entry){
-        for(int i = 0; i < numberOfElements; i++){
+        int originalNumber = numberOfElements;
+        for(int i = 0; i < originalNumber; i++){
             if(bag[i].equals(entry)){
                 numberOfElements--;
-                bag[i] = bag[numberOfElements];
+                if(!bag[numberOfElements].equals(entry)){
+                    bag[i] = bag[numberOfElements];
+                }else{
+                    for(int x = numberOfElements-1; x==0; x--){
+                        if(!bag[x].equals(entry)){
+                            bag[i]=bag[x];
+                            break;
+                        }
+                    }
+                }
             }
         }        
     }
